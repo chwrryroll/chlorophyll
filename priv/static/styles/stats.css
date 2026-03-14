@@ -1,0 +1,92 @@
+.card {
+  border-radius : 2.5rem;
+  user-select   : none;
+}
+
+.card__avatar {
+  margin-left: 2rem;
+}
+
+.card__avatar {
+  position        : relative;
+  width           : 24rem;
+  height          : 24rem;
+  margin-right    : 12rem;
+  display         : flex;
+  margin-top      : -1rem;
+  justify-content : center;
+}
+
+.card__avatar .avatar__source {
+  position  : absolute;
+  width     : 100%;
+  height    : 100%;
+  clip-path : circle(50% at 50% 50%);
+}
+
+.card__avatar .avatar__frame {
+  position : absolute;
+  width    : 29rem;
+  height   : 29rem;
+  top      : -2.2rem;
+  opacity  : 0.6;
+}
+
+.card__avatar .avatar__decor {
+  position : absolute;
+  width    : 10rem;
+  height   : 10rem;
+  left     : var(--decor-poseX);
+  top      : var(--decor-poseY);
+}
+
+.card__avatar .avatar__frame > svg {
+  fill: var(--frame-color);
+}
+
+.card__avatar .avatar__decor > svg {
+  fill: var(--decor-color);
+}
+
+.card__title {
+  font-family : "Title", cursive;
+  font-weight : bold;
+  font-size   : 4.5rem;
+  margin      : 1.5rem;
+  color       : var(--title-color);
+}
+
+.card__content {
+  display         : flex;
+  justify-content : space-between;
+}
+
+.content__table {
+  border-collapse : collapse;
+  width           : 40rem;
+  height          : 25rem;
+}
+
+.content__table .table__row {
+  height: 1rem;
+}
+
+.table__row .row__icon {
+  width         : 3rem;
+  max-height    : 3rem;
+  padding-right : 1rem;
+  fill          : var(--icon-color);
+}
+
+.table__row .row__label {
+  font-family : "Content", cursive;
+  font-weight : bold;
+  font-size   : 3em;
+  color       : var(--label-color)
+}
+
+.table__row .row__value {
+  font-family : "Content", cursive;
+  font-size   : 3rem;
+  color       : var(--value-color);
+}

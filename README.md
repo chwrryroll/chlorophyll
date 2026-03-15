@@ -22,7 +22,7 @@
 
 To generate a **GitHub Stats image** follow this line in your README.md and see how it works like a magic! 
 ```md
-![My Stats](https://chlorophyll.chwerryon.top/stats/chwrryroll)
+![My Stats](https://chlorophyll.chwrryon.top/stats/chwrryroll)
 ```
 Tadaaa~ And that's it, all ready! If you are seeing me instead, that means you forgot to change `chwrryroll` with your username... That's a cute mistake!
 

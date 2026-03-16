@@ -8,7 +8,7 @@ pub type Background {
 pub fn file(of bg: Background) -> String {
   case bg {
     Light             -> "light.jpg"
-    PinkyPromiseLeft  -> "pinky-promise-right.jpg"
+    PinkyPromiseLeft  -> "pinky-promise-left.jpg"
     PinkyPromiseRight -> "pinky-promise-right.jpg"
     Spacy             -> "spacy.jpg"
   }

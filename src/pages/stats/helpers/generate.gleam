@@ -1,7 +1,12 @@
+import gleam/bit_array
 import gleam/result .{try}
 import gleam/option .{type Option, None, Some}
 import gleam/list
 import gleam/string
+
+import gleam/httpc
+import gleam/http
+import gleam/http/request
 
 import app/error .{type ServiceError}
 
@@ -34,7 +39,20 @@ pub fn card(from data: User, with query: Query) -> Result(Card, ServiceError) {
 
   let title  = string.concat([data.username, "'s Github Stats"])
   let style  = string.concat([tfont, cfont, style])
-  let avatar = data.avatar_url
+
+  let assert Ok(body) = request.to(data.avatar_url)
+  let req = body
+  |> request.set_method(http.Get)
+  |> request.prepend_header("Content-Type", "image/jpeg")
+  |> request.set_body(<<>>)
+
+  use response <- try(
+    httpc.send_bits(req)
+    |> result.replace_error(error.SomethingWentWrong)
+  )
+  let avatar = response.body
+  |> bit_array.base64_encode(True)
+  |> string.append("data:image/jpeg;base64,", _)
 
   Ok(struct.Card(bg, avatar, decor, frame, title, rows, style))
 }

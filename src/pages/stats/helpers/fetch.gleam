@@ -41,7 +41,7 @@ pub fn user(by username: String) -> Result(User, ServiceError) {
     httpc.send(req)
     |> result.map_error(error.HttpRequestFailed)
   )
-  use decode <- result.try(decode(res.body))
+  use decode <- try(decode(res.body))
   Ok(decode)
 }
 
@@ -49,7 +49,7 @@ fn decode(json_string: String) -> Result(User, ServiceError) {
   let decoder = {
     use username <- decode.subfield(
       ["data", "user", "name"],
-      decode.string)
+      decode.optional(decode.string))
     use avatar_url <- decode.subfield(
       ["data", "user", "avatarUrl"],
       decode.string)

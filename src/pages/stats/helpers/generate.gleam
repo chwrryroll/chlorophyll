@@ -26,7 +26,7 @@ fn try_option(
   }
 }
 
-pub fn card(from data: User, with query: Query) -> Result(Card, ServiceError) {
+pub fn card(for username: String, from data: User, with query: Query) -> Result(Card, ServiceError) {
   use bg    <- try(load.bg(query.background))
   use decor <- try_option(load.decor(query.decor))
   use frame <- try_option(load.frame(query.frame))
@@ -37,7 +37,7 @@ pub fn card(from data: User, with query: Query) -> Result(Card, ServiceError) {
 
   use rows  <- try(labelize(data, query))
 
-  let title  = string.concat([data.username, "'s Github Stats"])
+  let title  = string.concat([option.unwrap(data.username, username), "'s Github Stats"])
   let style  = string.concat([tfont, cfont, style])
 
   let assert Ok(body) = request.to(data.avatar_url)

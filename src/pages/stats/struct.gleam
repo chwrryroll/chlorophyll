@@ -34,7 +34,7 @@ pub type Style {
 
 pub type User {
   User(
-    username      : String,
+    username      : Option(String),
     avatar_url    : String,
     earned_stars  : List(Int),
     commits       : Int,

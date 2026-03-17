@@ -23,20 +23,18 @@ pub fn handle(req: Request, ctx: web.Context, username: String) {
   |> result.unwrap([])
 
   use query <- try(query.parse(search_params))
-  use card  <- try(case cache {
-    Ok([data, ..]) -> {
-      use card  <- try(generate.card(from: data, with: query))
-      Ok(card)
-    }
+  use data  <- try(case cache {
     Ok([]) | Error(Nil) -> {
-      use data  <- try(fetch.user(by: username))
-      use card  <- try(generate.card(from: data, with: query))
+      use data <- try(fetch.user(by: username))
 
       mala.insert(ctx.bag, "stats/" <> username, data)
       |> result.unwrap(Nil)
-      Ok(card)
+      Ok(data)
     }
+    Ok([data, ..]) -> Ok(data)
   })
+  use card <- try(generate.card(for: username, from: data, with: query))
+
   let view = get_layout(query)
   render(card, using: view)
 }

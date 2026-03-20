@@ -1,5 +1,5 @@
 import gleam/list
-import gleam/result
+import gleam/result .{try}
 import gleam/option .{type Option, None, Some}
 
 import assets/stats as asset
@@ -41,7 +41,7 @@ pub fn parse(params: List(#(String, String))) -> Result(Query, ServiceError) {
   let oki = fn(a: t) -> Result(Option(t), ServiceError) {
     Ok(Some(a))
   }
-  use locale <- result.try(
+  use locale <- try(
     case list.key_find(params, "locale") {
       Error(Nil) -> Ok(default.locale)
       Ok("en") -> Ok(lang.En)
@@ -49,7 +49,7 @@ pub fn parse(params: List(#(String, String))) -> Result(Query, ServiceError) {
       Ok(ugh) -> Error(LanguageIsNotSupported(ugh))
     }
   )
-  use layout <- result.try(
+  use layout <- try(
     case list.key_find(params, "layout") {
       Error(Nil) -> Ok(default.layout)
       Ok("qiwq") -> Ok(asset.Qiwq)
@@ -57,7 +57,7 @@ pub fn parse(params: List(#(String, String))) -> Result(Query, ServiceError) {
       Ok(ugh) -> Error(AssetDoesNotExist(ugh))
     }
   )
-  use background <- result.try(
+  use background <- try(
     case list.key_find(params, "bg") {
       Error(Nil)                -> Ok(default.background)
       Ok("light")               -> Ok(bg.Light)
@@ -67,14 +67,14 @@ pub fn parse(params: List(#(String, String))) -> Result(Query, ServiceError) {
       Ok(ugh) -> Error(AssetDoesNotExist(ugh))
     }
   )
-  use icon <- result.try(
+  use icon <- try(
     case list.key_find(params, "icon") {
       Error(Nil)   -> Ok(default.icon)
       Ok("kitten") -> Ok(asset.Kitten)
       Ok(ugh) -> Error(AssetDoesNotExist(ugh))
     }
   )
-  use decor <- result.try(
+  use decor <- try(
     case list.key_find(params, "decor") {
       Error(Nil)   -> Ok(default.decor)
       Ok("ribbon") -> oki(asset.Ribbon)
@@ -82,7 +82,7 @@ pub fn parse(params: List(#(String, String))) -> Result(Query, ServiceError) {
       Ok(ugh) -> Error(AssetDoesNotExist(ugh))
     }
   )
-  use frame <- result.try(
+  use frame <- try(
     case list.key_find(params, "frame") {
       Error(Nil)    -> Ok(default.frame)
       Ok("catface") -> oki(asset.Catface)
@@ -100,8 +100,8 @@ pub fn parse(params: List(#(String, String))) -> Result(Query, ServiceError) {
       Ok(ugh) -> Error(AssetDoesNotExist(ugh))
     }
   }
-  use title_font   <- result.try(font("tfont"))
-  use content_font <- result.try(font("cfont"))
+  use title_font   <- try(font("tfont"))
+  use content_font <- try(font("cfont"))
 
   let title_color =
     list.key_find(params, "tcolor")

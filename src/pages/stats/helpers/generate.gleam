@@ -1,7 +1,7 @@
+import gleam/int
 import gleam/bit_array
 import gleam/result .{try}
 import gleam/option .{type Option, None, Some}
-import gleam/list
 import gleam/string
 
 import gleam/httpc
@@ -67,9 +67,7 @@ fn labelize(data: User, query: Query) -> Result(List(CardRow), ServiceError) {
     struct.CardRow(i, l, string.join([v, t], " "))
   }
 
-  let stars = data.earned_stars
-  |> list.reduce(fn(acc, x) { acc + x })
-  |> result.unwrap(0)
+  let stars = int.sum(data.earned_stars)
 
   let issues = form(data.closed_issues)
   |> string.append("/")

@@ -13,18 +13,18 @@
   - Also she is really good at drawing, please check her page as well! [@mochi_lullaby](https://www.instagram.com/mochi_lullaby)
 * ୨ৎ Customization
   - You are the artist you have the palette, **every color** is **modifyable**!!
-  - Easy to use but hard to choose, bunch of fonts are here as your options!
-  - Backgrounds? There's not solid colors but there is **images**!! (๑>◡<๑)
+  - Bunch of fonts are here as your options!
+  - Backgrounds? There's not solid colors but there is **images**!!
 
 # 🍓 How To Use??
 
 ## GitHub Stats
 
-To generate a **GitHub Stats image** follow this line in your README.md and see how it works like a magic! 
+To generate a **GitHub Stats image** follow this line in your README.md
 ```md
 ![My Stats](https://chlorophyll.chwrryon.top/stats/chwrryroll)
 ```
-Tadaaa~ And that's it, all ready! If you are seeing me instead, that means you forgot to change `chwrryroll` with your username... That's a cute mistake!
+Tadaaa~ If you are seeing me instead, that means you forgot to change `chwrryroll` with your own username... That's a silly mistake!
 
 But what about **customizing**? It's also done with editing URL
 You can **style** them by editting the query. Let's say you want to change the **title color**,
@@ -32,7 +32,7 @@ The color of the title can be controlled by the `tcolor` parameter...
 ```md
 ![My Stats](https://chlorophyll.chwrryon.top/stats/chwrryroll?tcolor=rebeccapurple)
 ```
-And it will work as you wish, hex colors might not work i'll fix them later!! ૮˶ᵔᵕᵔ˶ა
+And it will work as you wish, hex colors might not work i'll fix them later!
 
 > ⋆｡‧˚ʚ Note for sillies ɞ˚‧｡⋆ \
 > When you want to add multiple parameters, you need to add an '&' between them!! \
@@ -40,7 +40,7 @@ And it will work as you wish, hex colors might not work i'll fix them later!! �
 
 <img width="1380" height="550" src="./repository/examples/github-stats.png">
 
-**ALSO!!** I prepared a table to show which parameter controls which part!! (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ
+**ALSO!!** I prepared a table to show which parameter controls which part!! (*ᴗ͈ˬᴗ͈)ꕤ.ﾟ
 | Part         | Param  | Default        | Options                               |
 |--------------|--------|----------------|---------------------------------------|
 | Layout       | layout | qiwq           | qiwq, piwp                            |
@@ -81,8 +81,14 @@ And it will work as you wish, hex colors might not work i'll fix them later!! �
 
 ## Prerequisites
 
-There is some **required softwares** to get started!! Before you begin, **make sure** you have installed the following softwares!! \
-**[Gleam](https://gleam.run/install) • [Erlang](https://www.erlang.org/downloads) • [Rebar3](https://www.rebar3.org) • [Git](https://git-scm.com/downloads) • [Direnv](https://direnv.net/docs/installation.html)**
+There is some **required softwares** to get started!! Before you begin, **make sure** you have installed the following softwares!!
+<p align="center">
+  <a href="https://gleam.run/install">Gleam •</a>
+  <a href="https://www.erlang.org/downloads">Erlang •</a>
+  <a href="https://www.rebar3.org">Rebar3 •</a>
+  <a href="https://git-scm.com/downloads">Git •</a>
+  <a href="https://direnv.net/docs/installation.html">Direnv</a>
+</p>
 
 > For Erlang the latest version is needed, if your package manager doesn't supports the latest one i recommend you to use [BEAMUP](https://tsloughter.github.io/beamup) or [Mise](https://mise.jdx.dev/demo.html) instead of building it from the source.
 

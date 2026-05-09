@@ -22,14 +22,14 @@ fn prefix(file: String) -> String {
 }
 
 pub fn bits(path: String) -> Result(String, Nil) {
-  use priv <- try(wisp.priv_directory("chlorophyll"))
+  let assert Ok(priv) = wisp.priv_directory("chlorophyll")
   use src  <- try(simplifile.read_bits(priv <> path) |> result.replace_error(Nil))
   let base64 = bit_array.base64_encode(src, True)
   Ok(prefix(path) <> base64)
 }
 
 pub fn chars(path: String) -> Result(String, Nil) {
-  use priv <- try(wisp.priv_directory("chlorophyll"))
+  let assert Ok(priv) = wisp.priv_directory("chlorophyll")
   simplifile.read(priv <> path)
   |> result.replace_error(Nil)
 }

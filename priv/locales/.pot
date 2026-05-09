@@ -1,3 +1,0 @@
-#: src/pages/stats/gettext.gleam:42
-msgid  "%s's GitHub Stats"
-msgstr "%s's GitHub Stats"

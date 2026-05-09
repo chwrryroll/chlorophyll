@@ -1,3 +1,0 @@
-# Context: Title of the profile card
-msgid  "%s's GitHub Stats"
-msgstr "%s - GitHub Profili"

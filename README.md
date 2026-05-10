@@ -56,6 +56,7 @@ And it will work as you wish, hex colors might not work i'll fix them later!
 | Value Color  | vcolor | #806258        | (any css color)                       |
 | Frame Color  | fcolor | #828282        | (any css color)                       |
 | Decor Color  | dcolor | #EB00A1        | (any css color)                       |
+| Hide Avatar  | avatar | off            | on, off                               |
 | Decor Pose X | dposeX | 35%            | (any css unit thingy)                 |
 | Decor Pose Y | dposeY | 75%            | (any css unit thingy)                 |
 

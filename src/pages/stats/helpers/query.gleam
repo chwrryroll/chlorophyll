@@ -19,6 +19,7 @@ fn queery() -> Query {
     icon       : asset.Kitten,
     decor      : None,
     frame      : None,
+    avatar     : True,
 
     title_font   : font.Lilian,
     content_font : font.CutiePatootie,
@@ -65,6 +66,14 @@ pub fn parse(params: List(#(String, String))) -> Result(Query, ServiceError) {
       Ok("pinky-promise-left")  -> Ok(bg.PinkyPromiseLeft)
       Ok("pinky-promise-right") -> Ok(bg.PinkyPromiseRight)
       Ok(ugh) -> Error(AssetDoesNotExist(ugh))
+    }
+  )
+  use avatar <- try(
+    case list.key_find(params, "avatar"){
+      Error(Nil)  -> Ok(default.avatar)
+      Ok("on")    -> Ok(True)
+      Ok("off")   -> Ok(False)
+      Ok(ugh) -> Error(AssetDoesNotExist("Invalid avatar value: " <> ugh))
     }
   )
   use icon <- try(
@@ -133,5 +142,5 @@ pub fn parse(params: List(#(String, String))) -> Result(Query, ServiceError) {
     value_color:,  frame_color:, decor_color:,
     decor_pose_x:, decor_pose_y:
   )
-  Ok(struct.Query(locale, layout, background, icon, decor, frame, title_font, content_font, style))
+  Ok(struct.Query(locale, layout, background, icon, decor, frame, title_font, content_font, style, avatar))
 }

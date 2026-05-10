@@ -9,7 +9,10 @@ import components/picture
 import pages/stats/struct .{type Card}
 
 pub fn part(card: Card) -> Element(t) {
-  div([class("card__avatar")], [
+  case card.show_avatar {
+  False -> element.none()
+  True -> 
+    div([class("card__avatar")], [
     picture.img(card.avatar, [class("avatar__source")]),
     case card.frame {
       Some(source) -> div([class("avatar__frame")], [picture.svg(source)])
@@ -20,4 +23,5 @@ pub fn part(card: Card) -> Element(t) {
       None -> element.none()
     }
   ])
+  }
 }

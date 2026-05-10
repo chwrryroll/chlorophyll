@@ -39,22 +39,27 @@ pub fn card(for username: String, from data: User, with query: Query) -> Result(
 
   let title  = string.concat([option.unwrap(data.username, username), "'s Github Stats"])
   let style  = string.concat([tfont, cfont, style])
+  
+  use avatar <- try(case query.avatar {
+  True -> {
+    let assert Ok(body) = request.to(data.avatar_url)
+    let req = body
+    |> request.set_method(http.Get)
+    |> request.prepend_header("Content-Type", "image/jpeg")
+    |> request.set_body(<<>>)
 
-  let assert Ok(body) = request.to(data.avatar_url)
-  let req = body
-  |> request.set_method(http.Get)
-  |> request.prepend_header("Content-Type", "image/jpeg")
-  |> request.set_body(<<>>)
-
-  use response <- try(
-    httpc.send_bits(req)
-    |> result.replace_error(error.SomethingWentWrong)
-  )
-  let avatar = response.body
-  |> bit_array.base64_encode(True)
-  |> string.append("data:image/jpeg;base64,", _)
-
-  Ok(struct.Card(bg, avatar, decor, frame, title, rows, style))
+    use response <- try(
+      httpc.send_bits(req)
+      |> result.replace_error(error.SomethingWentWrong)
+    )
+    response.body
+    |> bit_array.base64_encode(True)
+    |> string.append("data:image/jpeg;base64,", _)
+    |> Ok
+    }
+    False -> Ok("")
+  })
+  Ok(struct.Card(bg, avatar, query.avatar, decor, frame, title, rows, style))
 }
 
 fn labelize(data: User, query: Query) -> Result(List(CardRow), ServiceError) {

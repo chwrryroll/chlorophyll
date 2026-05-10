@@ -15,7 +15,8 @@ pub type Query {
     frame        : Option(asset.Frame),
     title_font   : Font,
     content_font : Font,
-    style        : Style
+    style        : Style,
+    avatar       : Bool,
   )
 }
 
@@ -65,12 +66,13 @@ pub type CardRow {
 
 pub type Card {
   Card(
-    background : String,
-    avatar     : String,
-    decor      : Option(String),
-    frame      : Option(String),
-    title      : String,
-    rows       : List(CardRow),
-    stylesheet : String
+    background  : String,
+    avatar      : String,
+    show_avatar : Bool,
+    decor       : Option(String),
+    frame       : Option(String),
+    title       : String,
+    rows        : List(CardRow),
+    stylesheet  : String
   )
 }
